@@ -19,7 +19,7 @@ jobs:
     - name: Publish package
       run: mvn --batch-mode verify
     - name: Publish to GitHub Packages
-      run: mvn --batch-mode deploy
+      run: mvn --batch-mode -PgithubDeploy deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Set up Maven Central Repository
