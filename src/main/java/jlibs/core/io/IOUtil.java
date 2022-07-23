@@ -110,7 +110,7 @@ public class IOUtil{
      * @param os        outputstream into which data is written
      * @param closeIn   close inputstream or not
      * @param closeOut  close outputstream or not
-     * @return          the argument <code>os</os>
+     * @return          the argument <code>os</code>
      * @throws IOException if an I/O error occurs.
      */
     public static <T extends OutputStream> T pump(InputStream is, T os, boolean closeIn, boolean closeOut) throws IOException{
@@ -167,7 +167,7 @@ public class IOUtil{
      * @param writer        writer into which data is written
      * @param closeReader   close reader or not
      * @param closeWriter   close writer or not
-     * @return              the argument <code>writer</os>
+     * @return              the argument <code>writer</code>
      * @throws IOException if an I/O error occurs.
      */
     public static <T extends Writer> T pump(Reader reader, T writer, boolean closeReader, boolean closeWriter) throws IOException{

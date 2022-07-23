@@ -69,6 +69,19 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <excludePackageNames>jlibs.*</excludePackageNames>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <profiles>
         <!-- Porfil : Maven Centrale -->
         <profile>

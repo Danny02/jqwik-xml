@@ -42,7 +42,7 @@ public class SAXUtil{
 
     /**
      * Registers all sax hander interfaces implemented by <code>handler</code> to the
-     * specified <code>reader</reader>
+     * specified <code>reader</code>
      */
     public static void setHandler(XMLReader reader, Object handler) throws SAXNotSupportedException, SAXNotRecognizedException{
         if(handler instanceof ContentHandler)
