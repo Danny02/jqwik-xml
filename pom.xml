@@ -6,16 +6,14 @@
 
     <groupId>dev.nullzwo</groupId>
     <artifactId>jqwik-xml</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.9</version>
 
     <description>A small extension for jqwik to generate XML samples of a provides XSD.</description>
 
     <licenses>
         <license>
-            <!-- FIXME replace with the name of your LICENSE -->
             <name>Apache-2.0 License</name>
-            <!-- FIXME replace with the to your LICENSE url -->
-            <url>https://github.com/MathieuSoysal/Java-Maven-library-template/blob/master/LICENSE</url>
+            <url>https://github.com/Danny02/jqwik-xml/blob/master/LICENSE</url>
         </license>
     </licenses>
 
