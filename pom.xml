@@ -82,22 +82,29 @@
         </plugins>
     </build>
 
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Danny02 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/Danny02/jqwik-xml</url>
+        </repository>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <name>Central Repository OSSRH</name>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
     <profiles>
         <!-- Porfil : Maven Centrale -->
         <profile>
             <id>ossrhDeploy</id>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <name>Central Repository OSSRH</name>
-                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <name>Central Repository OSSRH</name>
-                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
 
             <build>
                 <plugins>
@@ -167,18 +174,6 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
-
-        <!-- Profil : Github Apache Maven Packages -->
-        <profile>
-            <id>githubDeploy</id>
-            <distributionManagement>
-                <repository>
-                    <id>github</id>
-                    <name>GitHub Danny02 Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/Danny02/jqwik-xml</url>
-                </repository>
-            </distributionManagement>
         </profile>
     </profiles>
 </project>
