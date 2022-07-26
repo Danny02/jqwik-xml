@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class XmlArbitraries {
 
-    public enum OptionalArguments {
+    public enum OptionalAttributes {
         NULL_ARGUMENTS,
         EMPTY_ARGUMENTS,
         BOTH;
@@ -29,7 +29,7 @@ public class XmlArbitraries {
 
     private static final Map<String, XSModel> models = new ConcurrentHashMap<>();
 
-    public static Arbitrary<byte[]> fromXsdFile(String xsdFile, String rootName, OptionalArguments config) {
+    public static Arbitrary<byte[]> fromXsdFile(String xsdFile, String rootName, OptionalAttributes config) {
         final Boolean value;
         switch (config) {
             case BOTH:

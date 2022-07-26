@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
-import static dev.nullzwo.jqwik.xml.XmlArbitraries.OptionalArguments.BOTH;
+import static dev.nullzwo.jqwik.xml.XmlArbitraries.OptionalAttributes.BOTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
