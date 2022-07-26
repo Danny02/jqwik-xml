@@ -2,14 +2,18 @@ package jlibs.xml.xsd;
 
 public class XSConfig {
 
-    public int minimumElementsGenerated = 2;
-    public int maximumElementsGenerated = 2;
-    public int minimumListItemsGenerated = 2;
-    public int maximumListItemsGenerated = 2;
-    public Boolean generateOptionalElements = Boolean.TRUE;
-    public Boolean generateOptionalAttributes = Boolean.TRUE;
-    public Boolean generateFixedAttributes = Boolean.TRUE;
-    public Boolean generateDefaultAttributes = Boolean.TRUE;
-    public boolean generateAllChoices = false;
+    public int minimumElementsGenerated = 1;
+    public int maximumElementsGenerated = 4;
+    public int minimumListItemsGenerated = 1;
+    public int maximumListItemsGenerated = 4;
+    public Boolean generateOptionalElements = null;
+    public Boolean generateOptionalAttributes = null;
+
+    public Boolean generateOptionalAttributesAsEmptyString = Boolean.FALSE;
+    public Boolean generateFixedAttributes = null;
+    public Boolean generateDefaultAttributes = null;
+    public boolean generateAllChoices = true;
     public boolean showContentModel = true;
+
+
 }

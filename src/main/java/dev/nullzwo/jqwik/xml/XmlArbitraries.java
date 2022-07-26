@@ -19,29 +19,42 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class XmlArbitraries {
 
-    private static final XSConfig DEFAULT_CONFIG = new XSConfig();
-
-    static {
-        DEFAULT_CONFIG.minimumElementsGenerated = 1;
-        DEFAULT_CONFIG.maximumElementsGenerated = 4;
-
-        DEFAULT_CONFIG.minimumListItemsGenerated = 1;
-        DEFAULT_CONFIG.maximumListItemsGenerated = 4;
-
-        DEFAULT_CONFIG.generateOptionalElements = null; // null means random
-        DEFAULT_CONFIG.generateOptionalAttributes = null; // null means random
-        DEFAULT_CONFIG.generateDefaultAttributes = null; // null means random
-        DEFAULT_CONFIG.generateFixedAttributes = null; // null means random
-        DEFAULT_CONFIG.generateAllChoices = true;
+    public enum OptionalArguments {
+        NULL_ARGUMENTS,
+        EMPTY_ARGUMENTS,
+        BOTH;
     }
+
+    private final XSConfig config = new XSConfig();
 
     private static final Map<String, XSModel> models = new ConcurrentHashMap<>();
 
-    public static Arbitrary<String> fromXsdFile(String xsdFile, String rootName) {
-        return Arbitraries.randomValue(r -> generate(r, xsdFile, rootName));
+    public static Arbitrary<byte[]> fromXsdFile(String xsdFile, String rootName, OptionalArguments config) {
+        final Boolean value;
+        switch (config) {
+            case BOTH:
+                value = null;
+                break;
+            case NULL_ARGUMENTS:
+                value = false;
+                break;
+            case EMPTY_ARGUMENTS:
+                value = true;
+                break;
+            default:
+                throw new UnsupportedOperationException();
+        }
+
+        return fromXsdFile(xsdFile, rootName, value);
     }
 
-    private static String generate(Random rnd, String xsdFile, String rootName) {
+    private static Arbitrary<byte[]> fromXsdFile(String xsdFile, String rootName, Boolean optionalAsEmptyString) {
+        var config = new XSConfig();
+        config.generateOptionalAttributesAsEmptyString = optionalAsEmptyString;
+        return Arbitraries.randomValue(r -> generate(r, xsdFile, rootName, config));
+    }
+
+    private static byte[] generate(Random rnd, String xsdFile, String rootName, XSConfig config) {
         var xsModel = loadModel(xsdFile);
 
         QName rootElement = new QName("", rootName);
@@ -49,10 +62,10 @@ public class XmlArbitraries {
         try {
             var out = new ByteArrayOutputStream();
             var sampleXml = new XMLDocument(new StreamResult(out), true, 4, null);
-            var xsInstance = new XSInstance(new RandomUtil(rnd), DEFAULT_CONFIG);
+            var xsInstance = new XSInstance(new RandomUtil(rnd), config);
             xsInstance.generate(xsModel, rootElement, sampleXml);
 
-            return new String(out.toByteArray());
+            return out.toByteArray();
         } catch (TransformerConfigurationException e) {
             throw new RuntimeException(e);
         }

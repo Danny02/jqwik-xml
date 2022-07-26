@@ -267,6 +267,8 @@ public class XSInstance{
                         default:
                             if(attr.getRequired() || randomUtil.randomBoolean(config.generateOptionalAttributes))
                                 sampleValue = generateSampleValue(decl.getTypeDefinition(), decl.getName());
+                            else
+                                sampleValue = randomUtil.randomBoolean(config.generateOptionalAttributesAsEmptyString) ? "" : null;
                     }
                     if(sampleValue!=null)
                         doc.addAttribute(decl.getNamespace(), decl.getName(), sampleValue);

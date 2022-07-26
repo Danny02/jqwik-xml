@@ -6,11 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+import static dev.nullzwo.jqwik.xml.XmlArbitraries.OptionalArguments.BOTH;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class XmlArbitrariesTest {
-    Arbitrary<String> arb = XmlArbitraries.fromXsdFile("src/test/resources/example.xsd", "shiporder");
+    Arbitrary<byte[]> arb = XmlArbitraries.fromXsdFile("src/test/resources/example.xsd", "shiporder", BOTH);
 
     @Test
     void shouldSameValueForSameRandom() {
